@@ -1,0 +1,6 @@
+{
+  "name": "Monovox Voice AI",
+  "description": "Minimalist voice client for real-time interaction with Google AI Studio, local DeepSeek instances, and custom agent backends with local verbal logging.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
