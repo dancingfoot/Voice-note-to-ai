@@ -75,6 +75,17 @@ class VoiceInteractionViewModel(application: Application) : AndroidViewModel(app
     private val _connectionStatus = MutableStateFlow<Pair<Boolean, String>?>(null)
     val connectionStatus: StateFlow<Pair<Boolean, String>?> = _connectionStatus.asStateFlow()
 
+    val voiceProfile: StateFlow<com.example.voice.VoiceProfile> = ttsManager.currentProfile
+
+    fun updateVoiceProfile(profile: com.example.voice.VoiceProfile) {
+        ttsManager.applyProfile(profile)
+        notify("Applied voice: ${profile.preset.displayName}")
+    }
+
+    fun testVoice() {
+        ttsManager.testVoice()
+    }
+
     init {
         val db = AppDatabase.getDatabase(application)
         repository = VoiceLogRepository(db.voiceLogDao())

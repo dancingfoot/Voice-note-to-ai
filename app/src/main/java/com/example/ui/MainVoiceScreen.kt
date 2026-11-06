@@ -105,6 +105,7 @@ fun MainVoiceScreen(
     val allLogs by viewModel.allLogs.collectAsStateWithLifecycle()
     val notification by viewModel.notification.collectAsStateWithLifecycle()
     val connectionStatus by viewModel.connectionStatus.collectAsStateWithLifecycle()
+    val voiceProfile by viewModel.voiceProfile.collectAsStateWithLifecycle()
 
     // Dialog & Sheet States
     var showConfigDialog by remember { mutableStateOf(false) }
@@ -728,10 +729,13 @@ fun MainVoiceScreen(
             currentEndpoint = activeEndpoint,
             availableEndpoints = endpoints,
             connectionStatus = connectionStatus,
+            currentVoiceProfile = voiceProfile,
             onDismiss = { showConfigDialog = false },
             onSelectEndpoint = { viewModel.selectEndpoint(it) },
             onSaveEndpoint = { viewModel.updateEndpoint(it) },
-            onTestConnection = { viewModel.testActiveConnection() }
+            onTestConnection = { viewModel.testActiveConnection() },
+            onUpdateVoiceProfile = { viewModel.updateVoiceProfile(it) },
+            onTestVoice = { viewModel.testVoice() }
         )
     }
 }
